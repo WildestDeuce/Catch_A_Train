@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //initialize firebase
     var config = {
-        apikey: "AIzaSyB23lmjrjWcP9KqRKvei6bjilxnl0XuDHc"  //firebase web API key
+        apikey: "AIzaSyB23lmjrjWcP9KqRKvei6bjilxnl0XuDHc",  //firebase web API key
         authDomain: "coder-bay-views.firebaseapp.com",
         databaseURL: "https://coder-bay-views.firebaseio.com",
         storageBucket: "coder-bay-views.appspot.com",
@@ -48,4 +48,3 @@ console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 // Next Train
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-</script>
