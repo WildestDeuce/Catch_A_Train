@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--external CSS-->
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Catch A Train</title>
 </head>
 
 <body>
+    <!--Jumbotron-->
     <div class="jumbotron" style="background-color: purple; color: goldenrod">
         <h1 class="text-center">Warning!! Trains Leave Station With Or Without You!!</h1>
         <h3 class="text-center">Times So Accurate, You Can Set Your Alarm To Them!</h3>
     </div>
+    <!--Table-->
     <table class="table">
-        <thead>
+        <thead class="thead-purple"
             <tr>
                 <th>Train Name</th>
                 <th>Destination</th>
@@ -25,15 +30,49 @@
                 <th>Minutes Away</th>
             </tr>
         </thead>
+        <tbody id="all-display">
+        </tbody>
     </table>
+    <!--Add Train-->
     <div id="addTrain"></div>
-
-
-</body>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                </div>
+                <div class="form-train">
+                    <label for="train-name">Train Name</label>
+                    <input class="form-control" id="trainName" type="text">
+                </div>
+                <div class="form-train">
+                    <label for="destination">Destination</label>
+                    <input class="form-control" id="destination" type="text">
+                </div>
+                <div class="form-train">
+                    <label for="frequency">Frequency</label>
+                    <input class="form-control" id="frequency" type="text">
+                </div>
+                <div class="form-train">
+                    <label for="next-arrival">Next Arrival</label>
+                    <input class="form-control" id="nextArrival" type="text">
+                </div>
+                <div class="form-train">
+                    <label for="minutes-away">Minutes Away</label>
+                    <input class="form-control" id="minutesAway" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class="panel-title">Add Train</h4>
+    <button type="button" class="btn btn-warning">Add Train</button></body>
+<!--moment.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
+<!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+<!--firebase-->
 <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<!--external javascript-->
 <script src="assets/javascript/app.js"></script>
 
 </html>
