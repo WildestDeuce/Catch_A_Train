@@ -1,50 +1,42 @@
-$(document).ready(function () {
-    //initialize firebase
-    var config = {
-        apikey: "AIzaSyB23lmjrjWcP9KqRKvei6bjilxnl0XuDHc",  //firebase web API key
-        authDomain: "coder-bay-views.firebaseapp.com",
-        databaseURL: "https://coder-bay-views.firebaseio.com",
-        storageBucket: "coder-bay-views.appspot.com",
-        messagingSenderId: "17945436261"
+// $(document).ready(function () {
 
-    }
-    firebase.initializeApp(config);
+//initialize firebase
+var firebaseConfig = {
+    apiKey: "AIzaSyB23lmjrjWcP9KqRKvei6bjilxnl0XuDHc",
+    authDomain: "wildestdeuce-project.firebaseapp.com",
+    databaseURL: "https://wildestdeuce-project.firebaseio.com",
+    projectId: "wildestdeuce-project",
+    storageBucket: "",
+    messagingSenderId: "727276126279",
+    appId: "1:727276126279:web:030d717b2b7da2a0"
+};
+firebase.initializeApp(firebaseConfig);
 
-    var database = firebase.database();
+var database = firebase.database();
 
 
-    //Capture Button Click
-    $("#addtrain").on("click", function (event) {
-        event.preventDefault()
-    
-        var connectionsRef = database.ref("/connections");
-        var connectedRef = database.ref(".info/connected");
-// Assumptions
-var tFrequency = 3;
+//Capture Button Click
+$("#train-submit ").on("click", function (event) {
+    event.preventDefault();
+    database.ref().push({
+        train: $("#trainName").val().trim(),
+        destination: $("#destination").val().trim(),
+        time: $("#firstTrain").val().trim(),
+        frequency: $("#frequency").val().trim(),
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
 
-// Time is 3:30 AM
-var firstTime = "03:30";
+    });
+});
+// grab data from database and populate divs in table
+database.ref().on("child_added", function (childSnapshot) {
+    console.log(childSnapshot.val().train);
+    console.log(childSnapshot.val().destination);
+    console.log(childSnapshot.val().time);
+    console.log(childSnapshot.val().frequency);
+    //code to populate divs
+    $("#all-display").append("<input class='form-control'>" + childSnapshot.val().train);
+    $("#all-display").append("<input class='form-control'>" + childSnapshot.val().destination);
+    $("#firstTrain").append("<input class='form-control'>" + childSnapshot.val().time);
+    $("#frequency").append("<input class='form-control'>" + childSnapshot.val().frequency)
+});
 
-// First Time (pushed back 1 year to make sure it comes before current time)
-var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-console.log(firstTimeConverted);
-
-// Current Time
-var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
-// Difference between the times
-var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-console.log("DIFFERENCE IN TIME: " + diffTime);
-
-// Time apart (remainder)
-var tRemainder = diffTime % tFrequency;
-console.log(tRemainder);
-
-// Minute Until Train
-var tMinutesTillTrain = tFrequency - tRemainder;
-console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-// Next Train
-var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
