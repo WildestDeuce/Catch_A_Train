@@ -20,7 +20,37 @@
         <h3 class="text-center">Times So Accurate, You Can Set Your Alarm To Them!</h3>
     </div>
     <!--Table-->
-    <table class="table"><h2 style="background-color:purple; padding:8px; color:goldenrod">Current Train Schedule</h2>
+    <table class="table">
+        <h2 style="background-color:purple; padding:8px; color:goldenrod">Current Train Schedule</h2>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency(min)</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">Minutes Away</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="col" id="train-name"></td>
+            </tr>
+            <tr>
+                <td id="going"></td>
+            </tr>
+            <tr>
+                <td id="min"></td>
+            </tr>
+            <tr>
+                <td id="next-arrival"></td>
+            </tr>
+            <tr>
+                <td id="minutes-away"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!---- <table class="table">
+        <h2 style="background-color:purple; padding:8px; color:goldenrod">Current Train Schedule</h2>
         <thead class="thead-dark">
             <tr>
                 <th>Train Name</th>
@@ -32,7 +62,7 @@
         </thead>
         <tbody id="all-display">
         </tbody>
-    </table>
+    </table>-->
     <!--Add Train-->
     <div id="addTrain"></div>
     <div class="row">
@@ -43,22 +73,54 @@
                 <thead class="thead-dark" class="panel-title ">
                     <h2 style="background-color:purple; padding:8px; color:goldenrod">Add Train</h2>
                 </thead>
-                <div class="form-group" col-md-8>
+                <div class="input-group input-group-sm mb-3">
+                    <label for="train-input">Train Name</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                    </div>
+                    <input id="trainName" type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <!----<div class="form-group" >
                     <label for="train-name">Train Name</label>
-                    <input class="form-control" id="trainName" type="text">
+                    <input id="trainName"col-md-8 type="text">
+                </div>-->
+                <div class="input-group input-group-sm mb-3">
+                    <label for="train-input">Destination</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                    </div>
+                    <input id="destination" type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
                 </div>
-                <div class="form-group" col-md-8>
+                <!----<div class="form-group" col-md-8>
                     <label for="destination">Destination</label>
-                    <input class="form-control" id="destination" type="text">
+                    <input id="destination" type="text">
+                </div>-->
+                <div class="input-group input-group-sm mb-3">
+                    <label for="train-input">First Train Time (HH:mm) military time</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                    </div>
+                    <input id="firstTrain" type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
                 </div>
-                <div class="form-group" col-md-8>
+                <!----<div class="form-group" col-md-8>
                     <label for="first-train-time">First Train Time (HH:mm) military time</label>
-                    <input class="form-control" id="firstTrain" type="text">
+                    <input id="firstTrain" type="text">
+                </div>-->
+                <div class="input-group input-group-sm mb-3">
+                    <label for="train-input">Frequency</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                    </div>
+                    <input id="frequency" type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
                 </div>
-                <div class="form-group" col-md-8>
+                <!---- <div class="form-group" col-md-8>
                     <label for="frequency">Frequency (minutes)</label>
-                    <input class="form-control" id="frequency" type="text">
-                </div>
+                    <input id="frequency" type="text">
+                </div>-->
             </div>
         </div>
     </div>
@@ -67,7 +129,7 @@
 </body>
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 <!--moment.js-->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script> -->
 <!--firebase-->

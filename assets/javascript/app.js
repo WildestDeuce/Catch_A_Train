@@ -34,9 +34,11 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
     //code to populate divs
-    $("#all-display").append("<input class='form-control'>" + childSnapshot.val().train);
-    $("#all-display").append("<input class='form-control'>" + childSnapshot.val().destination);
-    $("#firstTrain").append("<input class='form-control'>" + childSnapshot.val().time);
-    $("#frequency").append("<input class='form-control'>" + childSnapshot.val().frequency)
+    $("#train-name").append(childSnapshot.val().train);
+    $("#going").append(childSnapshot.val().destination);
+    $("#min").append(childSnapshot.val().frequency)
+    $("#next-arrival").append(childSnapshot.val().time);
+   // $("#minutes-away").append(childSnapshot.val().time);
+
 });
 
