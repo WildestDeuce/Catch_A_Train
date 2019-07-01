@@ -34,7 +34,13 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
     //code to populate divs
-    $("#tbody").append('$(<tr><td>${childSnapshot.val().train}</td><td>${childSnapshot.val().destination}</td><td>${childSnapshot.val().frequency}</td><td>${childSnapshot.val().time}</td></tr>');
+    $('#tbody').append(
+        $(
+            `<tr><td>${childSnapshot.val().train}</td><td>${childSnapshot.val().destination}</td><td>${
+                childSnapshot.val().frequency
+            }</td><td>${childSnapshot.val().time}</td></tr>`
+        )
+    );
 
 
 });
