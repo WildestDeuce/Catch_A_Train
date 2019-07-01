@@ -34,11 +34,9 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
     //code to populate divs
-    $("#train-name").append(childSnapshot.val().train);
-    $("#going").append(childSnapshot.val().destination);
-    $("#min").append(childSnapshot.val().frequency)
-    $("#next-arrival").append(childSnapshot.val().time);
-   // $("#minutes-away").append(childSnapshot.val().time);
+    $("#tbody").append('$(<tr><td>${childSnapshot.val().train}</td><td>${childSnapshot.val().destination}</td><td>${childSnapshot.val().frequency}</td><td>${childSnapshot.val().time}</td></tr>');
+
 
 });
 
+//then in your code do $(“#tbody”).append($(`<tr><td>${childSnapshot.val().train}</td><td>${childSnapshot.val().destination}</td><td>${childSnapshot.val().frequency}</td><td>${childSnapshot.val().time}</td></tr>`);
