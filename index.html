@@ -35,27 +35,15 @@
 use <tbody id=“tbody”>-->
         <tbody id="trainTable">
             <tr>
-                <td> field 1</td>
-                <td> field 2</td>
-                <td> field 3</td>
-                <td> field 4</td>
-            </tf>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tf>
         </tbody>
     </table>
-    <!---- <table class="table">
-        <h2 style="background-color:purple; padding:8px; color:goldenrod">Current Train Schedule</h2>
-        <thead class="thead-dark">
-            <tr>
-                <th>Train Name</th>
-                <th>Destination</th>
-                <th>Frequency</th>
-                <th>Next Arrival</th>
-                <th>Minutes Away</th>
-            </tr>
-        </thead>
-        <tbody id="all-display">
-        </tbody>
-    </table>-->
+
     <!--Add Train-->
     <div id="addTrain"></div>
     <div class="row">
@@ -66,65 +54,45 @@ use <tbody id=“tbody”>-->
                 <thead class="thead-dark" class="panel-title ">
                     <h2 style="background-color:purple; padding:8px; color:goldenrod">Add Train</h2>
                 </thead>
-                <div class="input-group input-group-sm mb-3">
-                    <label for="train-input">Train Name</label>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Train Name</label>
+                        <input type="text" class="form-control" id="trainName" placeholder="Enter Train Here">
                     </div>
-                    <input id="trainName" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <!----<div class="form-group" >
-                    <label for="train-name">Train Name</label>
-                    <input id="trainName"col-md-8 type="text">
-                </div>-->
-                <div class="input-group input-group-sm mb-3">
-                    <label for="train-input">Destination</label>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                    </div>
-                    <input id="destination" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <!----<div class="form-group" col-md-8>
-                    <label for="destination">Destination</label>
-                    <input id="destination" type="text">
-                </div>-->
-                <div class="input-group input-group-sm mb-3">
-                    <label for="train-input">First Train Time (HH:mm) military time</label>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                    </div>
-                    <input id="firstTrain" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <!----<div class="form-group" col-md-8>
-                    <label for="first-train-time">First Train Time (HH:mm) military time</label>
-                    <input id="firstTrain" type="text">
-                </div>-->
-                <div class="input-group input-group-sm mb-3">
-                    <label for="train-input">Frequency</label>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"></span>
-                    </div>
-                    <input id="frequency" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <!---- <div class="form-group" col-md-8>
-                    <label for="frequency">Frequency (minutes)</label>
-                    <input id="frequency" type="text">
-                </div>-->
+                </form>
             </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Destination</label>
+                    <input type="text" class="form-control" id="destination"
+                        placeholder="Enter Where You Are Going Here">
+                </div>
+            </form>
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Train Time (HH:mm) military time</label>
+                    <input type="text" class="form-control" id="firstTrain" placeholder="Enter Military Time Here">
+                </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Frequency</label>
+                    <input type="text" class="form-control" id="frequency"
+                        placeholder="Enter How Often Train Arrives Here">
+                </div>
+            </form>
         </div>
     </div>
-    <!--Add Train button-->
+        <!--Add Train button-->
     <button type="button" id="train-submit" class="btn btn-warning">Add Train</button>
 </body>
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
 <!--moment.js-->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script> -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <!--firebase-->
 <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase.js"></script>
 <!--external javascript-->

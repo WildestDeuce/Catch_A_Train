@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 //Capture Button Click
-$('#train-submit ').on('click', function(event) {
+$('#train-submit ').on('click', function (event) {
     event.preventDefault();
     database.ref().push({
         train: $('#trainName')
@@ -34,7 +34,7 @@ $('#train-submit ').on('click', function(event) {
     });
 });
 // grab data from database and populate divs in table
-database.ref().on('child_added', function(childSnapshot) {
+database.ref().on('child_added', function (childSnapshot) {
     console.log(childSnapshot.val().train);
     console.log(childSnapshot.val().destination);
     console.log(childSnapshot.val().time);
@@ -45,12 +45,40 @@ database.ref().on('child_added', function(childSnapshot) {
     var tdDestination = $(`<td>${mydata.destination}</td>`);
     var tdFrequency = $(`<td>${mydata.frequency}</td>`);
     var tdTime = $(`<td>${mydata.time}</td>`);
+    var tdNextTrain = $(`<td>${tMinutesTillTrain}</td>`);
     var tr = $(`<tr>`);
     tr.append(tdTrain);
     tr.append(tdDestination);
     tr.append(tdFrequency);
     tr.append(tdTime);
+    tr.append(tdNextTrain);
     $('#trainTable').append(tr);
 });
 
-//then in your code do $(“#tbody”).append($(`<tr><td>${childSnapshot.val().train}</td><td>${childSnapshot.val().destination}</td><td>${childSnapshot.val().frequency}</td><td>${childSnapshot.val().time}</td></tr>`);
+// Assumptions
+var tFrequency = 5
+
+// Time is set to input
+var firstTime = "12:30";
+
+var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+console.log(firstTimeConverted);
+
+var currentTime = moment();
+console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+// Difference between the times
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("DIFFERENCE IN TIME: " + diffTime);
+
+// Time apart (remainder)
+var tRemainder = diffTime % tFrequency;
+console.log(tRemainder);
+
+// Minute Until Train
+var tMinutesTillTrain = tFrequency - tRemainder;
+console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+// Next Train
+var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
